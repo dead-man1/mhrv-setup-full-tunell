@@ -161,7 +161,7 @@ pre{padding:12px;font-family:monospace;font-size:.78rem;line-height:1.65;color:#
 <span class="g">✓ رایگان</span>
 <span class="g">✓ بدون Root</span>
 <span class="b">Full Tunnel VPS</span>
-<span>v1.9.30</span>
+<span>v1.9.33</span>
 </div>
 </div>
 
@@ -555,7 +555,7 @@ echo "✅ پاک شد"</pre></div></div>
 <!-- ═══ ANDROID ═══ -->
 <div id="p-a" class="pnl">
 <div class="crd"><h3>📥 دانلود</h3>
-<a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest" target="_blank" style="background:var(--gd);color:#fff;padding:11px 14px;border-radius:6px;text-align:center;font-weight:600;display:block;margin-bottom:8px">📥 دانلود mhrv-rs APK — آخرین نسخه (v1.9.30)</a>
+<a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest" target="_blank" style="background:var(--gd);color:#fff;padding:11px 14px;border-radius:6px;text-align:center;font-weight:600;display:block;margin-bottom:8px">📥 دانلود mhrv-rs APK — آخرین نسخه (v1.9.33)</a>
 <a href="https://play.google.com/store/apps/details?id=com.server.auditor.ssh.client" target="_blank" style="background:var(--s2);border:1px solid var(--b);color:var(--t);padding:9px 14px;border-radius:6px;text-align:center;display:block;font-size:.85rem">💻 Termius SSH Client</a>
 </div>
 <div class="al g">✅ <strong>v1.9+:</strong> Full tunnel (no cert) — بدون certificate. YouTube via relay toggle اضافه شد.</div>
@@ -593,7 +593,7 @@ echo "✅ پاک شد"</pre></div></div>
 <div class="crd"><h3>✅ سازگاری با نسخه‌های قدیمی</h3>
 <div class="al g">💡 کاربرانی که قبلاً <strong>CodeFull.gs</strong> deploy کردن <strong>نیازی به redeploy ندارن</strong>. فقط اپ اندروید رو آپدیت کن و کد VPS رو دوباره بزن.</div>
 <ul class="ll">
-<li><span>✅</span><span>CodeFull.gs (745 خط، v1.9.30+) — با همه نسخه‌های v1.7+ سازگاره</span></li>
+<li><span>✅</span><span>CodeFull.gs (773 خط، v1.9.33+) — با همه نسخه‌های v1.7+ سازگاره</span></li>
 <li><span>⚠️</span><span>Code.gs ساده — فقط HTTP relay، Full Tunnel کار نمی‌کنه</span></li>
 <li><span>❌</span><span>نسخه‌های با req.auth — باید redeploy بشه</span></li>
 </ul></div>
@@ -633,23 +633,27 @@ echo "✅ پاک شد"</pre></div></div>
 </div>
 
 <div class="crd" style="border-color:rgba(63,185,80,.3)">
-<h3>🛡 آخرین آپدیت — نسخه v1.9.30 (مه ۲۰۲۶)</h3>
+<h3>🛡 آخرین آپدیت — نسخه v1.9.33 (مه ۲۰۲۶)</h3>
 <ul class="ll">
-<li><span>✅</span><span><strong>CodeFull.gs بهینه‌سازی شد</strong> — مسیر Full mode سبک‌تر و سریع‌تر (پردازش DNS بهینه‌تر)</span></li>
-<li><span>📏</span><span>اسکریپت جدید: <strong>۷۴۵ خط</strong> (قبلاً ۷۵۳ خط بود)</span></li>
-<li><span>🔄</span><span><strong>آپدیت اختیاریه</strong> — اسکریپت v1.9.29 هنوز کاملاً کار می‌کنه</span></li>
-<li><span>🆕</span><span>برای دریافت اسکریپت جدید: @Mhrv_script_bot → دکمه «📥 دریافت مجدد اسکریپت»</span></li>
-<li><span>💡</span><span>کلیدت عوض نمی‌شه — فقط کد جدید در Apps Script Paste کن و در Manage deployments → New version → Deploy</span></li>
+<li><span>⚡</span><span><strong>پشتیبانی فشرده‌سازی zstd</strong> — حجم batch ها کمتر، سهمیه روزانه دیرتر تموم می‌شه (v1.9.32)</span></li>
+<li><span>🔋</span><span><strong>رفع باگ quota burn</strong> — session های idle دیگه سهمیه چند Deployment رو نمی‌سوزونن (v1.9.31)</span></li>
+<li><span>🎤</span><span><strong>block_stun پیش‌فرض false</strong> — تماس صوتی WebRTC حالا کار می‌کنه (v1.9.31)</span></li>
+<li><span>📏</span><span>اسکریپت جدید: <strong>۷۷۳ خط</strong> (قبلاً ۷۴۵ خط بود)</span></li>
+<li><span>🆕</span><span>برای استفاده از zstd: اپ + اسکریپت + tunnel-node — هر سه باید آپدیت بشن</span></li>
+<li><span>💡</span><span>کاربران ربات: «📥 دریافت مجدد اسکریپت» بزنن، کد جدید رو Paste کنن، Manage deployments → New version → Deploy</span></li>
+<li><span>🔄</span><span><strong>آپدیت اختیاریه</strong> — اسکریپت قبلی هنوز کار می‌کنه (بدون zstd)</span></li>
 </ul>
 </div>
 
 <div class="crd">
 <h3>📜 سابقه آپدیت‌ها</h3>
 <ul class="ll">
-<li><span>📦</span><span><strong>v1.9.30</strong> (آخرین): CodeFull.gs بهینه‌سازی شد، ۷۴۵ خط</span></li>
-<li><span>📦</span><span><strong>v1.9.29</strong>: رفع باگ Code.gs JSON parse (CodeFull.gs دست نخورد)</span></li>
-<li><span>📦</span><span><strong>v1.9.28</strong>: Pipeline Full-mode polls، WebRTC fallback بهتر، block STUN/TURN UDP، ابزار benchmark</span></li>
-<li><span>📦</span><span><strong>v1.9.26</strong>: tunnel-node خودکار بعد از ری‌استارت VPS</span></li>
+<li><span>📦</span><span><strong>v1.9.33</strong> (آخرین): idle keepalive backoff بهتر برای fleets ترکیبی</span></li>
+<li><span>📦</span><span><strong>v1.9.32</strong>: zstd compression در batch protocol (backward compatible)</span></li>
+<li><span>📦</span><span><strong>v1.9.31</strong>: رفع باگ quota burn در idle sessions، block_stun پیش‌فرض false</span></li>
+<li><span>📦</span><span><strong>v1.9.30</strong>: CodeFull.gs بهینه‌سازی شد (۷۴۵ خط)</span></li>
+<li><span>📦</span><span><strong>v1.9.29</strong>: رفع باگ Code.gs JSON parse</span></li>
+<li><span>📦</span><span><strong>v1.9.28</strong>: Pipeline Full-mode، WebRTC fallback، benchmark</span></li>
 </ul>
 </div>
 
@@ -754,7 +758,7 @@ echo "✅ پاک شد"</pre></div></div>
 </div><!-- /cnt -->
 
 <div class="ftr">
-ساخته شده با ❤️ توسط <a href="https://github.com/KIAN-IRANi">Kian Irani</a> | <a href="https://t.me/kian_irani_cdn_f">آموزش</a> | <a href="https://t.me/Kian_irani_t">پشتیبانی</a> | <a href="https://t.me/Mhrv_script_bot">ربات اسکریپت</a> | <a href="guide.html">راهنمای تصویری</a> | <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK v1.9.30</a>
+ساخته شده با ❤️ توسط <a href="https://github.com/KIAN-IRANi">Kian Irani</a> | <a href="https://t.me/kian_irani_cdn_f">آموزش</a> | <a href="https://t.me/Kian_irani_t">پشتیبانی</a> | <a href="https://t.me/Mhrv_script_bot">ربات اسکریپت</a> | <a href="guide.html">راهنمای تصویری</a> | <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK v1.9.33</a>
 <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK</a>
 </div>
 
