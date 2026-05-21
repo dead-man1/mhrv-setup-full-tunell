@@ -249,7 +249,7 @@ PORT="8080" AUTH="$(openssl rand -hex 16)" SSH_PORT="22" \
 TEVuoZ7574341zbc8pc5jrrBrgqGGMys5q
 ```
 
-**کارت ایرانی:** `***REMOVED***` (***REMOVED*** — ***REMOVED***)
+⚡ سریع، بدون کارمزد، در همه صرافی‌ها موجود
 
 جزئیات کامل: **[DONATE.md](DONATE.md)**
 
