@@ -256,9 +256,12 @@ style="background:linear-gradient(90deg,rgba(37,99,235,.2),rgba(0,163,102,.15));
 <small>⚠️ مهم: اشتباه باشه VPS قفل میشه</small>
 </div>
 <div class="fld">
-<label>رمز مشترک (AUTH KEY)</label>
-<input id="key" placeholder="حداقل 15 کاراکتر — مثال: MySecret2024" oninput="upd()">
-<small>در VPS، Apps Script و اپ باید دقیقاً یکی باشد</small>
+<label>🔑 رمز مشترک (AUTH KEY)</label>
+<div style="display:flex;gap:6px">
+<input id="key" placeholder="حداقل ۱۶ کاراکتر — کلید رندوم (نه نام!)" oninput="upd();validateAuth()" style="flex:1">
+<button type="button" onclick="genAuth()" style="background:var(--g);color:#000;border:0;padding:0 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:.85rem;white-space:nowrap">🎲 ساخت</button>
+</div>
+<small id="authHint" style="color:var(--td)">⚠️ AUTH باید یه رشته رندوم باشه، نه نام و فامیل. دکمه «🎲 ساخت» رو بزن.</small>
 </div>
 </div>
 <div class="crd"><h3>📋 ترتیب کارها</h3>
@@ -770,6 +773,50 @@ function tab(n,b){
   b.classList.add('on');
 }
 function g(id,fb){var v=document.getElementById(id).value.trim();return v||fb;}
+
+function genAuth(){
+  // تولید کلید رندوم hex با 32 کاراکتر (16 بایت)
+  var arr = new Uint8Array(16);
+  crypto.getRandomValues(arr);
+  var hex = Array.from(arr).map(b => b.toString(16).padStart(2,'0')).join('');
+  var input = document.getElementById('key');
+  input.value = hex;
+  input.dispatchEvent(new Event('input'));
+  // افکت بصری
+  input.style.background = 'rgba(63,185,80,.15)';
+  setTimeout(function(){ input.style.background = ''; }, 800);
+}
+
+function validateAuth(){
+  var v = document.getElementById('key').value.trim();
+  var hint = document.getElementById('authHint');
+  if (!hint) return;
+  if (!v) {
+    hint.textContent = '⚠️ AUTH باید یه رشته رندوم باشه، نه نام و فامیل. دکمه «🎲 ساخت» رو بزن.';
+    hint.style.color = 'var(--td)';
+    return;
+  }
+  if (v.length < 16) {
+    hint.textContent = '❌ خیلی کوتاهه (' + v.length + ' کاراکتر). حداقل ۱۶ کاراکتر لازمه.';
+    hint.style.color = 'var(--r)';
+    return;
+  }
+  // الگوهای ضعیف
+  var weak = /^(admin|root|password|test|user|kian|amir|mahdi|ali|reza|name|123)/i;
+  if (weak.test(v)) {
+    hint.textContent = '⚠️ شبیه کلمه ساده یا نام است — ناامن! دکمه «🎲 ساخت» رو بزن.';
+    hint.style.color = 'var(--y)';
+    return;
+  }
+  // کاراکترهای خطرناک
+  if (/[ "\$\\`'!&;<>|*?]/.test(v)) {
+    hint.textContent = '❌ کاراکتر مشکل‌ساز داره. فقط حروف، اعداد، @ . _ - مجازه.';
+    hint.style.color = 'var(--r)';
+    return;
+  }
+  hint.textContent = '✅ AUTH معتبر است';
+  hint.style.color = 'var(--g)';
+}
 
 // ━━━ cache بیرون upd تا بین فراخوانی‌ها حفظ بشه ━━━
 var _gsTemplate = null;
