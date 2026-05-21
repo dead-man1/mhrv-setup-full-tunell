@@ -160,10 +160,14 @@ ufw allow ${SSH_PORT}/tcp comment "SSH" >> $LOG 2>&1
 ufw allow ${PORT}/tcp comment "mhrv-tunnel" >> $LOG 2>&1
 ufw --force enable >> $LOG 2>&1
 
-echo "[3/5] دانلود image (آخرین نسخه)..."
+echo "[3/5] دانلود image (نسخه پایدار)..."
+# نسخه پایدار رو از فایل VERSION ریپو بخون (به‌جای latest کور)
+TUNNEL_VERSION=$(curl -sfL "https://raw.githubusercontent.com/KIAN-IRANI/mhrv-setup-full-tunell/main/VERSION" 2>/dev/null | grep "^TUNNEL_VERSION=" | cut -d= -f2 | tr -d '\r\n ')
+[ -z "$TUNNEL_VERSION" ] && TUNNEL_VERSION="1.9.33"
+echo "      نسخه پایدار: $TUNNEL_VERSION"
 # پاک کردن image قدیمی برای pull تازه
-docker rmi ghcr.io/therealaleph/mhrv-tunnel-node:latest >> $LOG 2>&1 || true
-docker pull ghcr.io/therealaleph/mhrv-tunnel-node:latest >> $LOG 2>&1
+docker rmi ghcr.io/therealaleph/mhrv-tunnel-node:${TUNNEL_VERSION} >> $LOG 2>&1 || true
+docker pull ghcr.io/therealaleph/mhrv-tunnel-node:${TUNNEL_VERSION} >> $LOG 2>&1
 
 echo "[4/5] راه‌اندازی container..."
 docker rm -f mhrv-tunnel >> $LOG 2>&1 || true
@@ -175,7 +179,7 @@ docker run -d --name mhrv-tunnel \
   -p ${PORT}:${PORT} \
   -e PORT=${PORT} \
   -e TUNNEL_AUTH_KEY="${AUTH}" \
-  ghcr.io/therealaleph/mhrv-tunnel-node:latest >> $LOG 2>&1
+  ghcr.io/therealaleph/mhrv-tunnel-node:${TUNNEL_VERSION} >> $LOG 2>&1
 
 echo "[5/5] چک سلامت..."
 sleep 8
