@@ -14,6 +14,7 @@
 [![Debug Bot](https://img.shields.io/badge/AI%20Debug%20Bot-Free-e3b341?style=for-the-badge&logo=telegram)](https://t.me/Vpscript_bot)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Donate TRC20](https://img.shields.io/badge/Donate-TRON%20TRC20-EF0027?logo=tron)](DONATE.md)
 [![Stars](https://img.shields.io/github/stars/KIAN-IRANI/mhrv-setup-full-tunell?style=social)](https://github.com/KIAN-IRANI/mhrv-setup-full-tunell/stargazers)
 [![Forks](https://img.shields.io/github/forks/KIAN-IRANI/mhrv-setup-full-tunell?style=social)](https://github.com/KIAN-IRANI/mhrv-setup-full-tunell/network/members)
 
@@ -152,6 +153,24 @@ Contributions welcome! Please open an issue first for major changes. See [CONTRI
 
 For security issues, see [SECURITY.md](SECURITY.md).
 
+For version history, see [CHANGELOG.md](CHANGELOG.md).
+
+---
+
+## 💝 Support this project
+
+This project is **100% free**, but server costs and dev time add up.
+
+If you find it useful, consider supporting via **Tron TRC20**:
+
+```
+TEVuoZ7574341zbc8pc5jrrBrgqGGMys5q
+```
+
+(Accepts USDT, USDC, TRX — minimum ~$1)
+
+See **[DONATE.md](DONATE.md)** for full details, transparency cost breakdown, and Iranian card option.
+
 ---
 
 ## 🙏 Credits
@@ -220,6 +239,19 @@ PORT="8080" AUTH="$(openssl rand -hex 16)" SSH_PORT="22" \
 - 💬 گروه گفتگو: [@kiancdn_group](https://t.me/kiancdn_group)
 - 🆘 پشتیبانی: [@Kian_irani_t](https://t.me/Kian_irani_t)
 - 🖥 سرور اختصاصی: [@Kian_irani_vps](https://t.me/Kian_irani_vps)
+
+### 💝 حمایت از پروژه
+
+این پروژه **رایگانه**، ولی هزینه سرور و وقت توسعه واقعیه. اگه دوست داری حمایت کنی:
+
+**ترون TRC20** (USDT/USDC/TRX):
+```
+TEVuoZ7574341zbc8pc5jrrBrgqGGMys5q
+```
+
+**کارت ایرانی:** `***REMOVED***` (***REMOVED*** — ***REMOVED***)
+
+جزئیات کامل: **[DONATE.md](DONATE.md)**
 
 ---
 
