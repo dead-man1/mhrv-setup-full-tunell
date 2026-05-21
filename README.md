@@ -1,5 +1,8 @@
 <div align="center">
 
+[![English](https://img.shields.io/badge/lang-English-blue?style=flat-square)](README.md)
+[![فارسی](https://img.shields.io/badge/lang-فارسی-green?style=flat-square)](README.md#راهنمای-فارسی)
+
 # 🛡️ mhrv-rs Setup Guide
 
 ### Interactive setup guide for Full Tunnel anti-censorship VPN on Android
