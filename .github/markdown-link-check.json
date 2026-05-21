@@ -1,0 +1,11 @@
+{
+  "ignorePatterns": [
+    {"pattern": "^https://t\\.me/"},
+    {"pattern": "^https://www\\.canva\\.com/"},
+    {"pattern": "^https://canva\\.com/"}
+  ],
+  "timeout": "10s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s"
+}

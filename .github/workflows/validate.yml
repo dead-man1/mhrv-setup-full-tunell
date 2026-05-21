@@ -1,0 +1,78 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shell-check:
+    name: 🐚 Shell Script Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check syntax of all .sh files
+        run: |
+          for f in *.sh; do
+            echo "Checking $f..."
+            bash -n "$f" && echo "  ✅ $f"
+          done
+
+      - name: Run shellcheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          severity: warning
+          ignore_paths: .github
+
+  html-check:
+    name: 🌐 HTML Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate HTML files
+        run: |
+          python3 -c "
+          import sys
+          from html.parser import HTMLParser
+          class P(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.errors = []
+              def error(self, msg):
+                  self.errors.append(msg)
+          
+          ok = True
+          for f in ['index.html', 'guide.html', 'pc-ios.html']:
+              try:
+                  p = P()
+                  with open(f) as fp:
+                      p.feed(fp.read())
+                  if p.errors:
+                      print(f'❌ {f}:')
+                      for e in p.errors:
+                          print(f'   {e}')
+                      ok = False
+                  else:
+                      print(f'✅ {f}')
+              except Exception as e:
+                  print(f'❌ {f}: {e}')
+                  ok = False
+          
+          if not ok:
+              sys.exit(1)
+          "
+
+  link-check:
+    name: 🔗 Markdown Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          config-file: '.github/markdown-link-check.json'
+        continue-on-error: true
