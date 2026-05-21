@@ -166,6 +166,28 @@ a:hover{text-decoration:underline}
 </div>
 </li>
 
+<!-- مرحله ۱.۵ — ابزار TUN system-wide -->
+<li>
+<div class="sc">
+<strong>(اختیاری) ابزار TUN — برای tunnel کل سیستم</strong>
+<p>اپ ویندوز mhrv-rs فقط <strong>SOCKS5</strong> روی <code>127.0.0.1:1081</code> می‌ده — یعنی فقط مرورگرها و اپ‌هایی که SOCKS ساپورت می‌کنن از تونل استفاده می‌کنن.</p>
+<p style="margin-top:8px">اگه می‌خوای <strong>کل ویندوز</strong> tunnel بشه (Discord، گیم، Telegram، همه)، یکی از این دو ابزار رو نصب کن:</p>
+<div class="dl" style="margin-top:10px">
+<a class="dlb" href="https://github.com/MatsuriDayo/nekoray/releases" target="_blank">
+<span class="nm">🥇 NekoBox (GUI)</span>
+<span class="ds">پیشنهاد برای کاربر معمولی — کلیک و راه‌اندازی</span>
+</a>
+<a class="dlb" href="https://github.com/SagerNet/sing-box/releases" target="_blank">
+<span class="nm">🥈 sing-box (CLI)</span>
+<span class="ds">سبک‌تر، بدون GUI، مناسب کاربر فنی</span>
+</a>
+</div>
+<div class="al w" style="margin-top:10px"><span class="ai">⚙️</span><span class="at"><strong>تنظیم NekoBox:</strong> پروفایل جدید با نوع <code>SOCKS</code>، آدرس <code>127.0.0.1</code>، پورت <code>1081</code> → <strong>TUN Mode</strong> روشن → <strong>Start</strong></span></div>
+<div class="al w" style="margin-top:6px"><span class="ai">⚙️</span><span class="at"><strong>تنظیم sing-box:</strong> یه فایل <code>config.json</code> با TUN inbound + SOCKS outbound به <code>127.0.0.1:1081</code> بساز و با Administrator اجرا کن.</span></div>
+<p style="margin-top:8px;color:var(--td);font-size:.85rem">📖 راهنمای کامل با کانفیگ آماده و مراحل: در کانال ما (پست «راهنمای ویندوز»)</p>
+</div>
+</li>
+
 <!-- مرحله ۲ -->
 <li>
 <div class="sc">
