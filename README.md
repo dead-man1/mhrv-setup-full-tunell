@@ -176,6 +176,13 @@ See **[DONATE.md](DONATE.md)** for full details, transparency cost breakdown, an
 
 ---
 
+
+## 📊 Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/mhrv-setup-full-tunell-overview.svg "Repobeats analytics image")
+
+---
+
 ## 🙏 Credits
 
 This is a **community helper / setup wrapper** for the upstream project:
