@@ -1,13 +1,13 @@
 <div align="center">
 
 [![English](https://img.shields.io/badge/lang-English-blue?style=flat-square)](README.md)
-[![فارسی](https://img.shields.io/badge/lang-فارسی-green?style=flat-square)](README.md#راهنمای-فارسی)
+[![فارسی](https://img.shields.io/badge/lang-فارسی-green?style=flat-square)](README.fa.md)
 
 # 🛡️ mhrv-rs Setup Guide
 
 ### Interactive setup guide for Full Tunnel anti-censorship VPN on Android
 
-**🇮🇷 [راهنمای فارسی پایین‌تر صفحه](#راهنمای-فارسی)** — Persian guide below
+**🇮🇷 [راهنمای فارسی کامل: README.fa.md](README.fa.md)** — Persian guide
 
 [![Interactive Page](https://img.shields.io/badge/Live%20Site-Open%20in%20Browser-3fb950?style=for-the-badge&logo=github)](https://kian-irani.github.io/mhrv-setup-full-tunell/)
 [![Visual Guide](https://img.shields.io/badge/Visual%20Guide-8%20Steps-58a6ff?style=for-the-badge&logo=gitbook)](https://kian-irani.github.io/mhrv-setup-full-tunell/guide.html)
