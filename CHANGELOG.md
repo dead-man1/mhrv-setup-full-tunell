@@ -16,6 +16,17 @@ The `TUNNEL_VERSION` pin in [`VERSION`](VERSION) tracks the [upstream mhrv-rs re
 - Auto-update notification via Telegram bot
 - Health monitoring dashboard
 
+### Added (2026-05-21)
+- **🤖 Auto-sync workflow** (`.github/workflows/sync-upstream.yml`):
+  - Runs every 2 days at 18:00 UTC (21:30 Tehran time)
+  - Schedule: `0 18 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30 * *`
+  - First run: May 22, 2026 18:00 UTC
+  - Checks upstream `therealaleph/MasterHttpRelayVPN-RUST` for new releases
+  - Auto-updates: CodeFull.gs.template, VERSION, HTML download links,
+    README badges, CHANGELOG (this file)
+  - Commits + pushes only if upstream changed
+  - Manual trigger available via Actions → workflow_dispatch
+
 ---
 
 ## [2.0.0] — 2026-05-21
