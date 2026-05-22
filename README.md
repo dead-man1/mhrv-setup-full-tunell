@@ -114,7 +114,7 @@ Done. Enjoy free internet.
 | [`install.sh`](install.sh) | One-shot VPS installer (Docker + firewall + tunnel-node) |
 | [`update.sh`](update.sh) | Smart updater with auto-rollback on failure |
 | [`check.sh`](check.sh) | Health check & diagnostics |
-| [`VERSION`](VERSION) | Pinned tunnel-node version (currently `1.9.33`) |
+| [`VERSION`](VERSION) | Pinned tunnel-node version (currently `1.9.34`) |
 | [`CodeFull.gs.template`](CodeFull.gs.template) | Apps Script template with `%%AUTH_KEY%%` / `%%TUNNEL_URL%%` placeholders |
 
 ---

@@ -173,7 +173,7 @@ pre{padding:12px;font-family:monospace;font-size:.78rem;line-height:1.65;color:#
 <span class="g">✓ رایگان</span>
 <span class="g">✓ بدون Root</span>
 <span class="b">Full Tunnel VPS</span>
-<span>v1.9.33</span>
+<span>v1.9.34</span>
 </div>
 </div>
 
@@ -604,7 +604,7 @@ echo "✅ پاک شد"</pre></div></div>
 <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest" target="_blank" style="display:block;text-align:center;margin-top:10px;color:var(--td);font-size:.8rem;text-decoration:none">📋 دیدن همه نسخه‌ها و changelog در GitHub →</a>
 </div>
 
-<div class="al g">✅ <strong>v1.9.33:</strong> Full tunnel (no cert) — بدون certificate. zstd compression — ۳۰٪ صرفه‌جویی در پهنای باند. fix quota burn در حالت idle.</div>
+<div class="al g">✅ <strong>v1.9.34:</strong> config با فرمت TOML (به‌جای JSON) — آپگرید خودکار از نسخه‌های قبل. zstd compression. Full tunnel بدون certificate.</div>
 
 <div class="crd"><h3>📋 تنظیم اپ (v1.9+)</h3>
 <ul class="stp">
@@ -654,7 +654,7 @@ echo "✅ پاک شد"</pre></div></div>
 <div class="crd"><h3>✅ سازگاری با نسخه‌های قدیمی</h3>
 <div class="al g">💡 کاربرانی که قبلاً <strong>CodeFull.gs</strong> deploy کردن <strong>نیازی به redeploy ندارن</strong>. فقط اپ اندروید رو آپدیت کن و کد VPS رو دوباره بزن.</div>
 <ul class="ll">
-<li><span>✅</span><span>CodeFull.gs (773 خط، v1.9.33+) — با همه نسخه‌های v1.7+ سازگاره</span></li>
+<li><span>✅</span><span>CodeFull.gs (773 خط، v1.9.34+) — با همه نسخه‌های v1.7+ سازگاره</span></li>
 <li><span>⚠️</span><span>Code.gs ساده — فقط HTTP relay، Full Tunnel کار نمی‌کنه</span></li>
 <li><span>❌</span><span>نسخه‌های با req.auth — باید redeploy بشه</span></li>
 </ul></div>
@@ -694,7 +694,7 @@ echo "✅ پاک شد"</pre></div></div>
 </div>
 
 <div class="crd" style="border-color:rgba(63,185,80,.3)">
-<h3>🛡 آخرین آپدیت — نسخه v1.9.33 (مه ۲۰۲۶)</h3>
+<h3>🛡 آخرین آپدیت — نسخه v1.9.34 (مه ۲۰۲۶)</h3>
 <ul class="ll">
 <li><span>⚡</span><span><strong>پشتیبانی فشرده‌سازی zstd</strong> — حجم batch ها کمتر، سهمیه روزانه دیرتر تموم می‌شه (v1.9.32)</span></li>
 <li><span>🔋</span><span><strong>رفع باگ quota burn</strong> — session های idle دیگه سهمیه چند Deployment رو نمی‌سوزونن (v1.9.31)</span></li>
@@ -709,7 +709,7 @@ echo "✅ پاک شد"</pre></div></div>
 <div class="crd">
 <h3>📜 سابقه آپدیت‌ها</h3>
 <ul class="ll">
-<li><span>📦</span><span><strong>v1.9.33</strong> (آخرین): idle keepalive backoff بهتر برای fleets ترکیبی</span></li>
+<li><span>📦</span><span><strong>v1.9.34</strong> (آخرین): مهاجرت config از JSON به TOML با upgrade خودکار (PR #1317)</span></li>
 <li><span>📦</span><span><strong>v1.9.32</strong>: zstd compression در batch protocol (backward compatible)</span></li>
 <li><span>📦</span><span><strong>v1.9.31</strong>: رفع باگ quota burn در idle sessions، block_stun پیش‌فرض false</span></li>
 <li><span>📦</span><span><strong>v1.9.30</strong>: CodeFull.gs بهینه‌سازی شد (۷۴۵ خط)</span></li>
@@ -854,7 +854,7 @@ echo "✅ پاک شد"</pre></div></div>
 </div><!-- /cnt -->
 
 <div class="ftr">
-ساخته شده با ❤️ توسط <a href="https://github.com/KIAN-IRANi">Kian Irani</a> | <a href="https://t.me/kian_irani_cdn_f">آموزش</a> | <a href="https://t.me/Kian_irani_t">پشتیبانی</a> | <a href="https://t.me/Mhrv_script_bot">ربات اسکریپت</a> | <a href="guide.html">راهنمای تصویری</a> | <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK v1.9.33</a>
+ساخته شده با ❤️ توسط <a href="https://github.com/KIAN-IRANi">Kian Irani</a> | <a href="https://t.me/kian_irani_cdn_f">آموزش</a> | <a href="https://t.me/Kian_irani_t">پشتیبانی</a> | <a href="https://t.me/Mhrv_script_bot">ربات اسکریپت</a> | <a href="guide.html">راهنمای تصویری</a> | <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK v1.9.34</a>
 <a href="https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/latest">دانلود APK</a>
 </div>
 
@@ -913,24 +913,76 @@ function validateAuth(){
 
 // ━━━ cache بیرون upd تا بین فراخوانی‌ها حفظ بشه ━━━
 var _gsTemplate = null;
+var _gsLoading = false;
+var _gsRetries = 0;
 function _loadGS(cb) {
   if (_gsTemplate) { cb(_gsTemplate); return; }
-  fetch('CodeFull.gs.template')
-    .then(function(r){ return r.text(); })
-    .then(function(t){ _gsTemplate = t; cb(t); })
-    .catch(function(){ cb(null); });
+  if (_gsLoading) {
+    // اگه در حال بارگذاری هست، صبر کن
+    setTimeout(function(){ _loadGS(cb); }, 200);
+    return;
+  }
+  _gsLoading = true;
+
+  // cache-buster + مسیر مطلق برای جلوگیری از مشکل proxy
+  var url = 'CodeFull.gs.template?v=' + Date.now();
+  fetch(url, { cache: 'no-store' })
+    .then(function(r){
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function(t){
+      if (!t || t.length < 100 || t.indexOf('%%AUTH_KEY%%') === -1) {
+        throw new Error('Template ناقص');
+      }
+      _gsTemplate = t;
+      _gsLoading = false;
+      cb(t);
+    })
+    .catch(function(err){
+      _gsLoading = false;
+      _gsRetries++;
+      if (_gsRetries < 3) {
+        // ۳ بار retry با تاخیر افزایشی
+        console.warn('fetch fail, retry ' + _gsRetries, err);
+        setTimeout(function(){ _loadGS(cb); }, 1000 * _gsRetries);
+      } else {
+        // fallback به GitHub raw مستقیم
+        console.warn('local fetch failed, trying GitHub raw');
+        var rawUrl = 'https://raw.githubusercontent.com/KIAN-IRANI/mhrv-setup-full-tunell/main/CodeFull.gs.template?v=' + Date.now();
+        fetch(rawUrl, { cache: 'no-store' })
+          .then(function(r){ return r.text(); })
+          .then(function(t){
+            if (t && t.indexOf('%%AUTH_KEY%%') !== -1) {
+              _gsTemplate = t;
+              cb(t);
+            } else {
+              cb(null);
+            }
+          })
+          .catch(function(){ cb(null); });
+      }
+    });
 }
 function _updateGC(ip,pt,ak) {
   _loadGS(function(tmpl) {
     if (!tmpl) {
-      document.getElementById('gc').textContent = '❌ خطا در بارگذاری فایل';
+      document.getElementById('gc').textContent =
+        '❌ خطا در بارگذاری CodeFull.gs.template\n\n' +
+        'احتمالاً مرورگرت قطع شده یا فیلتر شده.\n' +
+        'راه حل:\n' +
+        '۱. صفحه رو refresh کن (Ctrl+Shift+R)\n' +
+        '۲. یه VPN/فیلترشکن متفاوت روشن کن و دوباره بزن\n' +
+        '۳. مستقیم از این لینک کپی کن:\n' +
+        'https://github.com/KIAN-IRANI/mhrv-setup-full-tunell/raw/main/CodeFull.gs.template\n\n' +
+        '(بعد دستی AUTH_KEY و TUNNEL_URL رو جایگزین کن)';
       return;
     }
     var url = 'http://' + ip + ':' + pt;
+    // استفاده از regex با /g برای جایگزینی همه موارد — مطمئن‌تر
     var out = tmpl
-      .replace('%%AUTH_KEY%%', ak)
-      .replace('%%TUNNEL_URL%%', url)
-      .replace('%%AUTH_KEY%%', ak);
+      .replace(/%%AUTH_KEY%%/g, ak)
+      .replace(/%%TUNNEL_URL%%/g, url);
     document.getElementById('gc').textContent = out;
   });
 }
