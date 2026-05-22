@@ -94,7 +94,11 @@ def fetch_upstream_codefull_main():
 
 
 def update_template(new_content):
-    """CodeFull.gs.template رو با نسخه جدید جایگزین کن"""
+    """دو فایل ذخیره می‌کنه:
+    1. CodeFull.gs.upstream  — placeholder های upstream خام (برای ربات با sed)
+    2. CodeFull.gs.template  — placeholder های ما %%X%% (برای صفحه با JS)
+    """
+    upstream_path = OUR_REPO_DIR / "CodeFull.gs.upstream"
     template_path = OUR_REPO_DIR / "CodeFull.gs.template"
     
     # تأیید: باید CHANGE_ME داشته باشه (placeholder upstream)
@@ -102,7 +106,11 @@ def update_template(new_content):
         log("CodeFull.gs upstream حاوی placeholder نیست — توقف!", "ERROR")
         return False
     
-    # جایگزینی با placeholder های ما
+    # ── ۱. فایل upstream خام (برای ربات روی VPS) ──
+    upstream_path.write_text(new_content)
+    log(f"CodeFull.gs.upstream آپدیت شد ({len(new_content.splitlines())} خط) — برای ربات", "OK")
+    
+    # ── ۲. فایل template با placeholder های ما (برای صفحه) ──
     new_template = new_content
     new_template = new_template.replace(
         'const AUTH_KEY = "CHANGE_ME_TO_A_STRONG_SECRET";',
