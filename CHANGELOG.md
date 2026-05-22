@@ -28,6 +28,20 @@ The `TUNNEL_VERSION` pin in [`VERSION`](VERSION) tracks the [upstream mhrv-rs re
   - Manual trigger available via Actions → workflow_dispatch
 
 ---
+## [1.9.34] — 2026-05-22 (auto-synced from upstream)
+
+### Changed
+- **Synced to mhrv-rs v1.9.34** (was v1.9.33)
+- CodeFull.gs.template updated to match upstream
+- All download links in `index.html` / `pc-ios.html` / README updated
+- VERSION file pin updated to 1.9.34
+
+### Upstream notes
+> <div dir="rtl">
+
+Auto-synced by `.github/workflows/sync-upstream.yml`
+
+---
 
 ## [2.0.0] — 2026-05-21
 

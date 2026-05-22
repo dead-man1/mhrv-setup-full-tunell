@@ -1,8 +1,8 @@
 # نسخه tunnel-node که در حال حاضر آزمایش شده و سازگاره
 # این فایل توسط install.sh و update.sh خونده می‌شه
 # هر بار که نسخه جدید رسمی منتشر شد، تست کن، اگه سالم بود اینجا رو آپدیت کن
-# نسخه‌های موجود: 1.9.31, 1.9.32, 1.9.33, latest
+# نسخه‌های موجود: https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases
 
-# فعلی: 1.9.33 (با zstd) — اول تست شد، روی template ۷۷۳ خطی کار می‌کنه
-TUNNEL_VERSION=1.9.33
+# فعلی: v1.9.34 — به‌طور خودکار توسط sync-upstream workflow آپدیت می‌شه
+TUNNEL_VERSION=1.9.34
 TEMPLATE_LINES=773
