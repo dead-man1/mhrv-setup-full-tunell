@@ -23,7 +23,7 @@ jobs:
       - name: Run shellcheck
         uses: ludeeus/action-shellcheck@master
         with:
-          severity: warning
+          severity: error
           ignore_paths: .github
 
   html-check:

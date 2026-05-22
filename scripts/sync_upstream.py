@@ -317,7 +317,22 @@ def main():
     new_lines = len(new_codefull.splitlines())
     log(f"CodeFull.gs upstream دانلود شد ({new_lines} خط)")
     
-    # آپدیت template
+    # ── چک: آیا CodeFull.gs واقعاً تغییر کرده؟ ──
+    # بسیاری از release ها فقط شماره نسخه رو بالا می‌برن
+    # (تغییرات در اپ Rust، نه در Apps Script)
+    upstream_path = OUR_REPO_DIR / "CodeFull.gs.upstream"
+    codefull_changed = True
+    if upstream_path.exists():
+        old_content = upstream_path.read_text()
+        if old_content == new_codefull:
+            codefull_changed = False
+            log("CodeFull.gs بدون تغییر — فقط شماره نسخه آپدیت می‌شه", "INFO")
+        else:
+            # محاسبه تفاوت برای لاگ
+            old_lines_count = len(old_content.splitlines())
+            log(f"CodeFull.gs تغییر کرده: {old_lines_count} → {new_lines} خط", "OK")
+    
+    # آپدیت template (حتی اگه تغییر نکرده، باز بنویس — مهم نیست)
     if not update_template(new_codefull):
         return 1
     
@@ -330,10 +345,20 @@ def main():
     # آپدیت README badge
     update_readme_badge(current_tag_v, upstream["tag"])
     
-    # آپدیت CHANGELOG
-    append_changelog(current_tag_v, upstream["tag"], upstream.get("body", ""))
+    # آپدیت CHANGELOG (با ذکر اینکه CodeFull تغییر کرد یا نه)
+    upstream_body = upstream.get("body", "")
+    if not codefull_changed:
+        upstream_body = (
+            "ℹ️ CodeFull.gs بدون تغییر نسبت به نسخه قبل — "
+            "تغییرات این release فقط در اپ Rust (نه Apps Script).\n\n"
+            + upstream_body
+        )
+    append_changelog(current_tag_v, upstream["tag"], upstream_body)
     
-    log(f"sync کامل شد: {current_tag_v} → {upstream['tag']}", "OK")
+    if codefull_changed:
+        log(f"sync کامل شد: {current_tag_v} → {upstream['tag']} (CodeFull.gs تغییر کرد)", "OK")
+    else:
+        log(f"sync کامل شد: {current_tag_v} → {upstream['tag']} (فقط شماره نسخه)", "OK")
     
     # خروجی برای GitHub Actions (تشخیص که آیا تغییر کرد)
     if "GITHUB_OUTPUT" in os.environ:
@@ -341,6 +366,7 @@ def main():
             f.write(f"synced=true\n")
             f.write(f"old_version={current_tag}\n")
             f.write(f"new_version={upstream['tag'].lstrip('v')}\n")
+            f.write(f"codefull_changed={'true' if codefull_changed else 'false'}\n")
     
     return 0
 

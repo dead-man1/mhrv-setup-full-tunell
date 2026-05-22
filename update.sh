@@ -9,7 +9,7 @@
 
 set -e
 LOG=/tmp/mhrv-update.log
-> $LOG
+: > $LOG
 
 # ── چک root ──
 if [ "$(id -u)" -ne 0 ]; then

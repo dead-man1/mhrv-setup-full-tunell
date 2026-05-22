@@ -12,7 +12,7 @@
 
 set -e
 LOG=/tmp/mhrv-install.log
-> $LOG
+: > $LOG
 export DEBIAN_FRONTEND=noninteractive
 
 # ╔════════════════════════════════════════════════╗
@@ -147,7 +147,7 @@ fi
 systemctl enable docker --now >> $LOG 2>&1 || true
 
 # صبر تا Docker آماده بشه
-for i in 1 2 3 4 5; do
+for _ in 1 2 3 4 5; do
   docker info >/dev/null 2>&1 && break
   sleep 2
 done

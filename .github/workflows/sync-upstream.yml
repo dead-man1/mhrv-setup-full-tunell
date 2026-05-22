@@ -71,22 +71,42 @@ jobs:
         env:
           OLD_VERSION: ${{ steps.sync.outputs.old_version }}
           NEW_VERSION: ${{ steps.sync.outputs.new_version }}
+          CODEFULL_CHANGED: ${{ steps.sync.outputs.codefull_changed }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           git add -A
           
-          git commit -m "🤖 auto: sync to mhrv-rs v${NEW_VERSION} (was v${OLD_VERSION})
+          # Commit message مبتنی بر اینکه CodeFull.gs تغییر کرد یا نه
+          if [ "$CODEFULL_CHANGED" = "true" ]; then
+            COMMIT_TITLE="🤖 auto: sync to mhrv-rs v${NEW_VERSION} (CodeFull.gs changed)"
+            COMMIT_BODY="CodeFull.gs در این release تغییر کرده — کاربرها باید script رو دوباره deploy کنن.
 
-          Automatic sync triggered by sync-upstream.yml.
+          Changed:
+          - CodeFull.gs.upstream → نسخه جدید
+          - CodeFull.gs.template → با placeholder های ما
+          - VERSION → TUNNEL_VERSION=${NEW_VERSION}
+          - download links در index.html, pc-ios.html
+          - README badges
+          - CHANGELOG.md entry"
+          else
+            COMMIT_TITLE="🤖 auto: bump version to v${NEW_VERSION} (no CodeFull.gs changes)"
+            COMMIT_BODY="فقط شماره نسخه تغییر کرد — CodeFull.gs بدون تغییر.
+          
+          تغییرات این release احتمالاً فقط در اپ Rust هست (نه Apps Script).
+          نیازی به re-deploy script برای کاربرها نیست.
           
           Changed:
-          - CodeFull.gs.template → upstream v${NEW_VERSION}
-          - VERSION file: TUNNEL_VERSION=${NEW_VERSION}
-          - All download links updated in index.html, pc-ios.html
-          - README badges refreshed
-          - CHANGELOG.md entry added
+          - VERSION → TUNNEL_VERSION=${NEW_VERSION}
+          - download links در index.html, pc-ios.html
+          - README badges
+          - CHANGELOG.md entry"
+          fi
+          
+          git commit -m "${COMMIT_TITLE}
+
+          ${COMMIT_BODY}
           
           Source: https://github.com/therealaleph/MasterHttpRelayVPN-RUST/releases/tag/v${NEW_VERSION}"
           
@@ -98,11 +118,18 @@ jobs:
           OLD_VERSION: ${{ steps.sync.outputs.old_version }}
           NEW_VERSION: ${{ steps.sync.outputs.new_version }}
           HAS_CHANGES: ${{ steps.changes.outputs.has_changes }}
+          CODEFULL_CHANGED: ${{ steps.sync.outputs.codefull_changed }}
         run: |
           echo "## 🔄 Sync result" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ "$HAS_CHANGES" = "true" ]; then
             echo "✅ **Synced:** v${OLD_VERSION} → v${NEW_VERSION}" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            if [ "$CODEFULL_CHANGED" = "true" ]; then
+              echo "⚠️ **CodeFull.gs CHANGED** — users should re-deploy" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "ℹ️ CodeFull.gs unchanged — version bump only" >> $GITHUB_STEP_SUMMARY
+            fi
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "Changes committed and pushed automatically." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
